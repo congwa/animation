@@ -1,3 +1,4 @@
+<!-- React中的使用 https://zhuanlan.zhihu.com/p/585002207 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,6 +17,8 @@
         border: 1px solid #ccc;
         margin-left: 10px;
         margin-top: 10px;
+        background-image: url(https://p.ipic.vip/cng6ka.jpg);
+        background-size: contain;
       }
       .box_0 {
         width: 200px;
@@ -143,11 +146,14 @@
           x: firstInfo.x - lastInfo.x,
           y: firstInfo.y - lastInfo.y,
         };
+        console.log(invertInfo, lastInfo, firstInfo)
         // 第三步、计算变化的数据数据 - 将克隆节点赋值变化的数据 回到初始位置
         //特别说明 由于有scale，会导致transformOrigin发生变化，在修改scale时需要将transformOrigin归零
         cloneDom.style.transformOrigin = "0 0";
+        // 是不是很疑惑 -100% 哪里来的？ 最终位置是 -50%，相比之前放大了2倍，那我们的最终位置位置就是 50% * 2 
+        // 此步骤的最终目的是为了回到初始位置
         cloneDom.style.transform = `scale(1) translate(calc(-100% + ${invertInfo.x}px),calc(-100% + ${invertInfo.y}px))`;
-        //第四步、设定过度动画，删除第三步的transform
+        //第四步、设定过度动画，删除第三步的transform。 从初始位置开始
         setTimeout(() => {
           cloneDom.style.transition = "all .5s";
           cloneDom.style.transformOrigin = "";
