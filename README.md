@@ -1,2 +1,2 @@
 # animation
-模仿抄录的一些觉得不错的动画效果
+Some nice front-end animation breakdowns
