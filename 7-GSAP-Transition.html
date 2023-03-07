@@ -46,34 +46,50 @@
         autoAlpha: 0,
         scale: 2,
         transformOrigin: "50% 50%",
+        zIndex: 1
       });
 
       tl.to(id, 1, {
         autoAlpha: 1,
         scale: 1,
+        opacity:1,
         ease: "power4.easeOut",
       });
+  
       return tl
     }
 
     function Leave(id) {
-      return gsap.to(id, 0.5, {
-        scale: 0,
+      const tl = gsap.timeline()
+      tl.set(id, {
+        zIndex: 3,
+        WebkitMask: "linear-gradient(45deg, #000 100%, transparent 100%, transparent 100%)",
+      })
+      tl.to(id, 1, {
+        zIndex: 2,
         ease: "power4.easeOut",
+        WebkitMask: "linear-gradient(45deg, #000 0%, transparent 0%, transparent 100%)",
       });
+      tl.set(id,{
+        zIndex: 0,
+        WebkitMask: ''
+      }, ">")
+      return tl
     }
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelector("#zoom1").addEventListener("click", function (e) {
+        console.log('leave zoom1')
         e.stopPropagation();
         const timeline = gsap.timeline()
         timeline.add(Leave('#zoom1'))
-        timeline.add(Enter('#zoom2'), "<")
+        timeline.add(Enter('#zoom2'), "<-=0.2")
       });
       document.querySelector("#zoom2").addEventListener("click", function (e) {
+        console.log('leave zoom2')
         e.stopPropagation();
         const timeline = gsap.timeline()
         timeline.add(Leave('#zoom2'))
-        timeline.add(Enter('#zoom1'), "<")
+        timeline.add(Enter('#zoom1'), "<-=0.2")
       });
     });
   </script>
