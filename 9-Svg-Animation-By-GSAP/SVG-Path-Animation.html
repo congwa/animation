@@ -1,0 +1,96 @@
+<!-- 播放svg动画 -- 路径动画 -->
+
+<!-- svg-path动画原理 -->
+
+<!-- 
+  如果想在 CSS 中让一个元素沿着路径运动，核心要用的的属性有两个，分别是 `offset-path` 、`offset-distance`  。
+
+    `offset-path` 这个属性接受一个 `path` 用于指定元素的运动轨迹。
+
+    `offset-distance` 这个属性声明了元素沿着路径运动的距离。常用 `100%` 表示路径总长度。
+
+    其实 `offset-path` 这个属性都前身叫做 `motion-path` ，并且所有 `motion-*` 相关都属性都改为了 `offset-*`
+ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>播放svg动画-- 路径动画</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/MotionPathPlugin.min.js"></script>
+  </head>
+  <style>
+    body {
+      background-color: black;
+    }
+    .bloc {
+      margin-top: 5%;
+      margin-left: 30%;
+      background-color: black;
+    }
+    .rocket {
+      background-color: blue;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+  </style>
+  <body>
+    <div class="bloc bloc-head">
+      <svg width="891px" height="502px" viewBox="0 0 891 502">
+        <g
+          id="page-1"
+          stroke="none"
+          stroke-width="1"
+          fill="none"
+          fill-rule="evenodd"
+        >
+          <g
+            id="canvas"
+            transform="translate(-254.000000, -229.000000)"
+            stroke="#979797"
+          >
+            <path
+              id="rocket-path"
+              d="M254.176965,724.703501 C344.518264,740.446962 426.933366,723.447117 501.422273,673.703966 C613.155634,599.08924 556.372552,480.989479 673.298424,465.529966 C790.224296,450.070453 833.25236,631.21486 973.972003,584.009185 C1067.7851,552.538735 1124.45691,434.26844 1143.98743,229.1983"
+              id="rocket-path"
+              stroke="#4af"
+              stroke-dasharray="20"
+            ></path>
+          </g>
+        </g>
+      </svg>
+
+      <!-- rocket -->
+      <div id="rocket" class="rocket">
+
+      </div>
+    </div>
+  </body>
+  <script>
+    gsap.config({
+      autoSleep: 60,
+      force3D: false,
+      nullTargetWarn: false,
+      trialWarn: false,
+      units: { left: "%", top: "%", rotation: "rad" },
+    });
+
+    // register the plugin (just once)
+    gsap.registerPlugin(MotionPathPlugin);
+
+    gsap.to("#rocket", {
+      duration: 3.3,
+      repeat: -1,
+      ease: Linear.easeNone,
+      motionPath: {
+        path: "#rocket-path", // 沿着轨迹运动
+        align: "#rocket-path",
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5],
+      },
+    });
+  </script>
+</html>
