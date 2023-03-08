@@ -22,9 +22,15 @@ timeline时间线动画分解
 
 通过gsap驱动帧动画、滚动视差帧动画
 
-## svg animation by gsap (future)
+## svg animation by gsap (In Progress)
 
 通过gsap驱动svg动画
+
+- 描边动画- stroke
+- 路径动画- path
+- 变形动画- morphing (future)
+- 闪烁动画- blink (future)
+- 图案动画- pattern (future)
 
 ## Segmented timeline scroll animation by GSAP (future)
 
