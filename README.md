@@ -28,8 +28,8 @@ timeline时间线动画分解
 
 - 描边动画- stroke
 - 路径动画- path
-- 变形动画- morphing (future)
-- 闪烁动画- blink (future)
+- 变形动画- morphing 
+- 闪烁动画- blink 
 - 图案动画- pattern (future)
 
 ## Segmented timeline scroll animation by GSAP (future)
