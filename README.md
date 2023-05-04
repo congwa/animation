@@ -69,3 +69,8 @@ timeline时间线动画分解
 5. 根据滚动距离计算当前timeline播放进度，使用timeline.seek(progress)设置当前动画进度
 
 </details>
+
+
+### 钉钉官网特效
+
+[钉钉官网特效模拟传送门](/12-dingding-website/)
