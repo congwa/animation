@@ -1,5 +1,10 @@
 # animation
 
+## 归档说明
+
+本项目已经合并到个人博客项目中
+
+## 项目说明
 Some nice front-end animation breakdowns
 
 ## 查看
